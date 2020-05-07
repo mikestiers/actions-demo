@@ -19,7 +19,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - run: terraform init
-      - run: terraform plan input=false -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" -var="tenant_id=${{ secrets.tenantId }}" -var="client_id=${{ secrets.servicePrincipalId }}" -var="client_secret=${{ secrets.servicePrincipalKey }}"
+      - run: terraform plan -out vnet.tfplan input=false -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" -var="tenant_id=${{ secrets.tenantId }}" -var="client_id=${{ secrets.servicePrincipalId }}" -var="client_secret=${{ secrets.servicePrincipalKey }}"
 
 
       #          ls -Flah
