@@ -28,5 +28,7 @@ jobs:
           -var="tenant_id=${{ secrets.tenantId }} \
           -var="client_id=${{ secrets.servicePrincipalId }} \
           -var="client_secret=${{ secrets.servicePrincipalKey }}
+
+          
     #terraform plan
     #az webapp list --query "[?state=='Running']"
