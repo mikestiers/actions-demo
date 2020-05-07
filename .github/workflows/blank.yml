@@ -33,5 +33,6 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - run: |
         ls -Flah
-        terraform plan
+        az network vnet create -g contoso -n contoso-vnet
+    #terraform plan
     #az webapp list --query "[?state=='Running']"
