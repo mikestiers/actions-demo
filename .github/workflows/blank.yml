@@ -23,12 +23,6 @@ jobs:
           ls -Flah
           echo ${{ secrets.rg }}
           az network vnet create -g contoso -n contoso-vnet
-          terraform plan \
-          -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }} \
-          -var="tenant_id=${{ secrets.tenantId }} \
-          -var="client_id=${{ secrets.servicePrincipalId }} \
-          -var="client_secret=${{ secrets.servicePrincipalKey }}
-
-          
+          terraform plan -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }} -var="tenant_id=${{ secrets.tenantId }} -var="client_id=${{ secrets.servicePrincipalId }} -var="client_secret=${{ secrets.servicePrincipalKey }}
     #terraform plan
     #az webapp list --query "[?state=='Running']"
