@@ -21,10 +21,11 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - run: |
         az network vnet create -g contoso -n contoso-vnet
-    - run: terraform init
+    - run: |
+           terraform init
            terraform plan -out vnet.tfplan input=false \
             -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
             -var="tenant_id=${{ secrets.tenantId }}" \
             -var="client_id=${{ secrets.servicePrincipalId }}" \
             -var="client_secret=${{ secrets.servicePrincipalKey }}"
-          az network vnet create -g contoso -n contoso-vnet
+           az network vnet create -g contoso -n contoso-vnet
