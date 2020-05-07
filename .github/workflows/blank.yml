@@ -13,11 +13,9 @@ jobs:
       - name: Checkout Repo
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Install Terraform
       - uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 0.12.24
-      - name: Login to Azure
       - uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
