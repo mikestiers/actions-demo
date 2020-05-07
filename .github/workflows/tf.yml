@@ -1,32 +1,32 @@
-name: TF
+name: Terraform deploy to Azure
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - name: HashiCorp - Setup Terraform
-      uses: hashicorp/setup-terraform@v1.0.1
+    - name: "Checkout"
+      uses: actions/checkout@master
+
+    - name: "Terraform Init"
+      uses: hashicorp/terraform-github-actions@master
       with:
-        terraform_version: 0.12.24
-    - name: Azure Login
-      uses: Azure/login@v1
+        tf_actions_version: 0.12.13
+        tf_actions_subcommand: "init"
+
+    - name: "Terraform Plan"
+      uses: hashicorp/terraform-github-actions@master
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - run: |
-        az network vnet create -g contoso -n contoso-vnet
-    - run: |
-           terraform init
-           terraform plan -out vnet.tfplan input=false \
-            -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
-            -var="tenant_id=${{ secrets.tenantId }}" \
-            -var="client_id=${{ secrets.servicePrincipalId }}" \
-            -var="client_secret=${{ secrets.servicePrincipalKey }}"
-           az network vnet create -g contoso -n contoso-vnet
-           
+        tf_actions_version: 0.12.13
+        tf_actions_subcommand: "plan"
+        args: '-var="client_secret=${{ secrets.clientSecret }}"'
+
+    - name: "Terraform Apply"
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 0.12.13
+        tf_actions_subcommand: "apply"
+        args: '-var="client_secret=${{ secrets.clientSecret }}"'
+
