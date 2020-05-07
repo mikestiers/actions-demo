@@ -25,6 +25,7 @@ jobs:
       with:
         terraform_version: 0.12.24
     - run: terraform init
+    - run: terraform plan
 
     - uses: Azure/login@v1
       with:
