@@ -29,3 +29,4 @@ jobs:
             -var="client_id=${{ secrets.servicePrincipalId }}" \
             -var="client_secret=${{ secrets.servicePrincipalKey }}"
            az network vnet create -g contoso -n contoso-vnet
+           
