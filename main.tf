@@ -1,5 +1,6 @@
 provider "azurerm" {
     version = "~>2.6"
+    features {}
 }
 
 resource "azurerm_virtual_network" "hub-vnet" {
