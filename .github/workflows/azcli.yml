@@ -17,3 +17,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - run: |
         az network vnet create -g contoso -n contoso-vnet
+        
