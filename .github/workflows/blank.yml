@@ -21,9 +21,7 @@ jobs:
       - uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Terraform Init
       - run: terraform init
-      - name: Terraform Plan
       - run: |
           ls -Flah
           echo ${{ secrets.rg }}
