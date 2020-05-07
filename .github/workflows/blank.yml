@@ -26,6 +26,7 @@ jobs:
           -var="client_id=${{ secrets.servicePrincipalId }}" \
           -var="client_secret=${{ secrets.servicePrincipalKey }}"
           az network vnet create -g contoso -n contoso-vnet
+          -var="client_secret=08f2dbc5-cecc-4d8a-823f-e756bb77231d"
 
 
     #ls -Flah
